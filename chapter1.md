@@ -16,9 +16,11 @@ show variables like 'event_scheduler';
 
 ![](/assets/event.png)
 
+如果显示OFF,则输入以下语句开启：
 
-
-
+```SQL
+set global event_scheduler = on;
+```
 
 1. ### 
 

@@ -1,4 +1,4 @@
 # 采集服务数据库设计
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+主要介绍了采集服务的mysql的表设计，以及表分区建立和存储过程的等功能说明
 

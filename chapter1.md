@@ -36,7 +36,13 @@ show variables like 'event_scheduler';
 
 * ### 创建计划事件
 
-### 
+有两种设定计划任务的方式：
+
+1. AT 时间戳，用来完成单次的计划任务。
+
+2. EVERY 时间（单位）的数量时间单位\[STARTS 时间戳\] \[ENDS时间戳\]，用来完成重复的计划任务。
+
+在重复的计划任务中，时间（单位）的数量可以是任意非空（Not Null）的整数式，时间单位是关键词：YEAR，MONTH，DAY，HOUR，MINUTE 或者SECOND。
 
 
 

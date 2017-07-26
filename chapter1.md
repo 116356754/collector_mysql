@@ -26,6 +26,14 @@ set global event_scheduler = on;
 
 ![](/assets/event_default.png)
 
+重启Mysql，此时再调用查询语句，就会发现mysql自动开启了事件
+
+```
+show variables like 'event_scheduler';
+```
+
+![](/assets/event_on.png)
+
 1. ### 
 
 

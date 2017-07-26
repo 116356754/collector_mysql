@@ -12,7 +12,13 @@
 show variables like 'event_scheduler';
 ```
 
+默认mysql是关闭的
+
 ![](/assets/event.png)
+
+
+
+
 
 1. ### 
 

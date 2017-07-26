@@ -44,5 +44,13 @@ show variables like 'event_scheduler';
 
 在重复的计划任务中，时间（单位）的数量可以是任意非空（Not Null）的整数式，时间单位是关键词：YEAR，MONTH，DAY，HOUR，MINUTE 或者SECOND。
 
+因为我们需要每半个月就需要创建一个表分区，所以我们需要创建EVERY类型的计划任务，任务的内容为调用存储过程，该存储过程是创建新的表分区。
 
+![](/assets/cron_define.png)
+
+![](/assets/cron_start.png)
+
+每隔15天就需要调用一次存储过程，新建表分区
+
+![](/assets/cron_start.png)
 

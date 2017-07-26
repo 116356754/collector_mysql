@@ -12,6 +12,8 @@
 show variables like 'event_scheduler';
 ```
 
+![](/assets/event.png)
+
 1. ### 
 
 

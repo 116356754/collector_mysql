@@ -22,6 +22,10 @@ show variables like 'event_scheduler';
 set global event_scheduler = on;
 ```
 
+**虽然这里用set global event\_scheduler = on语句开启了事件，但是每次重启电脑。或重启mysql服务后，会发现，事件自动关闭（event\_scheduler=OFF），所以想让事件一直保持开启，最好修改配置文件，让mysql服务启动的时候开启时间，只需要在my-default.ini**配置文件的**\[mysqld\]部分**加上_**event\_scheduler=ON，如下所示：**_
+
+![](/assets/event_default.png)
+
 1. ### 
 
 

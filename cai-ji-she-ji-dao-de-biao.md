@@ -16,7 +16,9 @@
 
 * ### 能耗类型表
 
-      CREATE TABLE `usage` (
+  能耗类型表，主要是在电表的能耗进行逻辑上分类，这样以后就可以按照能耗类型进行统计
+
+*     CREATE TABLE `usage` (
         `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
         `type` tinyint(4) DEFAULT NULL COMMENT '能耗类型',
         `name` char(255) DEFAULT NULL COMMENT '能耗名称',

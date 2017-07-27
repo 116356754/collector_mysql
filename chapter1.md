@@ -136,5 +136,11 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
           COMMIT ;
        end;
 
+可以手动调用该存储过程，试试看能否追加表分区。
+
+```
+CALL Set_Partition('roottest2', 'test');
+```
+
 
 

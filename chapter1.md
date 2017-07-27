@@ -87,7 +87,7 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 )
 ```
 
-如图所示：
+执行上述语句后，我们可以在naviCat中的test表“设计表-》选项”中查看到分区信息，如图所示：
 
 ![](/assets/partion_create.png)
 

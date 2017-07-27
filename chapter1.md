@@ -50,5 +50,5 @@ show variables like 'event_scheduler';
 
 每隔15天就需要调用一次存储过程，实现新增表分区的功能。
 
-![](/assets/import.png)
+![](/assets/event_plan.png)
 

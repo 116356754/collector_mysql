@@ -4,5 +4,15 @@
 
 * ### 区域表
 
+区域表主要是存储采集的位置信息的，也就是电表的位置信息，是一个树形结构的信息表，
+
+    CREATE TABLE `area` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `node_id` int(11) NOT NULL COMMENT '节点id',
+      `parent_id` int(11) NOT NULL COMMENT '父节点id',
+      `name` varchar(255) NOT NULL COMMENT '节点名称',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 

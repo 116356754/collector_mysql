@@ -52,3 +52,9 @@ show variables like 'event_scheduler';
 
 ![](/assets/event_plan.png)
 
+* ### 建立测试的表和数值表分区
+
+
+
+
+

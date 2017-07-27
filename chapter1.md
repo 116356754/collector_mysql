@@ -78,10 +78,13 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
-在测试的test表中，主键为id和read\_time，设置read\_time为主键是为了能够以read\_time作为表分区的关键字段，同时建立了第一个表分区p20170801 ，该分区的值为read\_time的天数小于2017-08-01。
+在测试的test表中，主键为id和read\_time，设置read\_time为主键是为了能够以read\_time作为表分区的关键字段，同时建立了一个表分区p20170801 ，该分区的值为read\_time的天数小于2017-08-01。
 
 ```
-
+ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
+(
+    PARTITION p20160523 VALUES LESS THAN (TO_DAYS('2017-08-01'))
+)
 ```
 
 如图所示：

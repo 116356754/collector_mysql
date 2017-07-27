@@ -54,6 +54,31 @@ show variables like 'event_scheduler';
 
 * ### 建立测试的表和数值表分区
 
+建立分区的优点很多，主要有：
+
+1. 可以把一些归类的数据放在一个分区中，可以减少服务器检查数据的数量加快查询。
+2. 方便维护，通过删除分区来删除老的数据。
+3. 根据查找条件，也就是where后面的条件，查找只查找相应的分区不用全部查找了。
+
+但是使用表分区也有约束条件：
+
+1.  每张表最大分区数为1024。
+2. 所有的主键或者唯一索引必须被包含在分区表达式中。
+3. 不能使用任何外键约束。
+
+为了测试我们，新建了一个表test，表结构如下：
+
+```SQL
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `read_time` date NOT NULL,
+  PRIMARY KEY (`id`,`read_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+PARTITION BY RANGE (TO_DAYS(read_time))
+(PARTITION p20170801 VALUES LESS THAN (736907) ENGINE = InnoDB)
+```
+
 
 
 

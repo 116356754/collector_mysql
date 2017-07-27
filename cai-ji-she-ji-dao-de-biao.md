@@ -14,5 +14,15 @@
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+* ### 能耗类型表
+
+    CREATE TABLE `usage` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `type` tinyint(4) DEFAULT NULL COMMENT '能耗类型',
+      `name` char(255) DEFAULT NULL COMMENT '能耗名称',
+      `description` varchar(255) DEFAULT NULL COMMENT '描述信息',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电能的用途的分类';
+
 
 

@@ -104,10 +104,10 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
           set @_tablename = tablename;
 
           /* 到系统表查出这个表的最大分区，得到最大分区的日期。在创建分区的时候，名称就以日期格式存放，方便后面维护 */
-          set @maxpartition = Concat("select REPLACE(partition_name,'p','') into @P12_Name from INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",@_tablename,"' order by partition_ordinal_position DESC limit 1;");
+          set @maxpartition = Concat("select REPLACE(partition_name,'p','') into @P12_Name from 
+             INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",@_tablename,"' order by partition_ordinal_position DESC limit 1;");
           PREPARE stmt2 FROM @maxpartition;
           EXECUTE stmt2;
-          #select REPLACE(partition_name,'p','') into @P12_Name from INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='tmp33' and table_name='tab_data' order by partition_ordinal_position DESC limit 1;
 
       /* 判断最大分区的时间段，如果是前半个月的，那么根据情况需要加13,14,15,16天
          如果是后半个月的，那么直接加15天。 +0 是为了把日期都格式化成YYYYMMDD这样的格式*/
@@ -124,7 +124,7 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
       /* 修改表，在最大分区的后面增加一个分区，时间范围加半个月 */
           SET @s1=concat('ALTER TABLE ',@_tablename,' ADD PARTITION (PARTITION p',
-      	@Max_date,' VALUES LESS THAN (TO_DAYS (''',date(@Max_date),''')))');
+          @Max_date,' VALUES LESS THAN (TO_DAYS (''',date(@Max_date),''')))');
           PREPARE stmt2 FROM @s1;
           EXECUTE stmt2;
           DEALLOCATE PREPARE stmt2;

@@ -136,7 +136,7 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
           COMMIT ;
        end;
 
-可以手动调用该存储过程，试试看能否追加表分区。
+可以手动调用该存储过程，就可以追加表分区，当然这个存储是为上面的计划事件提供的，每隔15天执行一次该存储事件。
 
 ```
 CALL Set_Partition('roottest2', 'test');

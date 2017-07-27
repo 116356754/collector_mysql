@@ -48,9 +48,7 @@ show variables like 'event_scheduler';
 
 ![](/assets/cron_define.png)
 
-![](/assets/cron_start.png)
+每隔15天就需要调用一次存储过程，实现新增表分区的功能。
 
-每隔15天就需要调用一次存储过程，新建表分区
-
-![](/assets/cron_start.png)
+![](/assets/import.png)
 

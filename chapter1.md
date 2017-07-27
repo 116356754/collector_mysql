@@ -105,7 +105,8 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
           /* 到系统表查出这个表的最大分区，得到最大分区的日期。在创建分区的时候，名称就以日期格式存放，方便后面维护 */
           set @maxpartition = Concat("select REPLACE(partition_name,'p','') into @P12_Name from 
-             INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",@_tablename,"' order by partition_ordinal_position DESC limit 1;");
+             INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",
+             @_tablename,"' order by partition_ordinal_position DESC limit 1;");
           PREPARE stmt2 FROM @maxpartition;
           EXECUTE stmt2;
 

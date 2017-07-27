@@ -91,5 +91,7 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
 ![](/assets/partion_create.png)
 
+* ### 创建追加表分区的存储过程
+
 
 

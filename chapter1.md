@@ -93,7 +93,9 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
 * ### 创建追加表分区的存储过程
 
-      CREATE DEFINER = `root`@`%` PROCEDURE `NewProc`(in dbname varchar(512), in tablename varchar(512))
+  创建一个存储过程，完成表后面每半个月追加一次表空间的功能，输入参数为数据库名称和表名称。
+
+*     CREATE DEFINER = `root`@`%` PROCEDURE `NewProc`(in dbname varchar(512), in tablename varchar(512))
       begin
 
       /* 事务回滚，其实放这里没什么作用，ALTER TABLE是隐式提交，回滚不了的。*/

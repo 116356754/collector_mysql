@@ -74,10 +74,17 @@ CREATE TABLE `test` (
   `name` varchar(20) DEFAULT NULL,
   `read_time` date NOT NULL,
   PRIMARY KEY (`id`,`read_time`)
+  KEY `readtime` (`read_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-PARTITION BY RANGE (TO_DAYS(read_time))
-(PARTITION p20170801 VALUES LESS THAN (736907) ENGINE = InnoDB)
 ```
 
-在测试的test表中，主键为id和read\_time，设置read\_time为主键是为了能够以read\_time作为表分区的关键字段，同时建立了第一个表分区p20170801 ，该分区的值为read\_time的天数小于2017-08-01
+在测试的test表中，主键为id和read\_time，设置read\_time为主键是为了能够以read\_time作为表分区的关键字段，同时建立了第一个表分区p20170801 ，该分区的值为read\_time的天数小于2017-08-01。
+
+```
+
+```
+
+如图所示：
+
+![](/assets/partion_create.png)
 

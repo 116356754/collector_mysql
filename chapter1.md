@@ -62,11 +62,11 @@ show variables like 'event_scheduler';
 
 但是使用表分区也有约束条件：
 
-1.  每张表最大分区数为1024。
+1. 每张表最大分区数为1024。
 2. 所有的主键或者唯一索引必须被包含在分区表达式中。
 3. 不能使用任何外键约束。
 
-为了测试我们，新建了一个表test，表结构如下：
+为了测试我们，新建了一个表test，DDL语句如下：
 
 ```SQL
 CREATE TABLE `test` (
@@ -79,7 +79,5 @@ PARTITION BY RANGE (TO_DAYS(read_time))
 (PARTITION p20170801 VALUES LESS THAN (736907) ENGINE = InnoDB)
 ```
 
-
-
-
+在测试的test表中，主键为id和read\_time，设置read\_time为主键是为了能够以read\_time作为表分区的关键字段，同时建立了第一个表分区p20170801 ，该分区的值为read\_time的天数小于2017-08-01
 

@@ -93,48 +93,48 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
 * ### 创建追加表分区的存储过程
 
-  创建一个存储过程，完成表后面每半个月追加一次表空间的功能，输入参数为数据库名称和表名称。
+  创建一个Set\_Partition存储过程，完成表后面每半个月追加一次表空间的功能，输入参数为数据库名称和表名称。
 
-*     CREATE DEFINER = `root`@`%` PROCEDURE `NewProc`(in dbname varchar(512), in tablename varchar(512))
-      begin
+    CREATE DEFINER = `root`@`%` PROCEDURE `NewProc`(in dbname varchar(512), in tablename varchar(512))
+    begin
 
-      /* 事务回滚，其实放这里没什么作用，ALTER TABLE是隐式提交，回滚不了的。*/
-          declare exit handler for sqlexception rollback;
-          start TRANSACTION;
+    /* 事务回滚，其实放这里没什么作用，ALTER TABLE是隐式提交，回滚不了的。*/
+    declare exit handler for sqlexception rollback;
+    start TRANSACTION;
 
-          set @_dbname = dbname;
-          set @_tablename = tablename;
+    set @_dbname = dbname;
+    set @_tablename = tablename;
 
-          /* 到系统表查出这个表的最大分区，得到最大分区的日期。在创建分区的时候，名称就以日期格式存放，方便后面维护 */
-          set @maxpartition = Concat("select REPLACE(partition_name,'p','') into @P12_Name from 
-             INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",
-             @_tablename,"' order by partition_ordinal_position DESC limit 1;");
-          PREPARE stmt2 FROM @maxpartition;
-          EXECUTE stmt2;
+    /* 到系统表查出这个表的最大分区，得到最大分区的日期。在创建分区的时候，名称就以日期格式存放，方便后面维护 */
+    set @maxpartition = Concat("select REPLACE(partition_name,'p','') into @P12_Name from 
+       INFORMATION_SCHEMA.PARTITIONS where TABLE_SCHEMA='",@_dbname,"' and table_name='",
+       @_tablename,"' order by partition_ordinal_position DESC limit 1;");
+    PREPARE stmt2 FROM @maxpartition;
+    EXECUTE stmt2;
 
-      /* 判断最大分区的时间段，如果是前半个月的，那么根据情况需要加13,14,15,16天
-         如果是后半个月的，那么直接加15天。 +0 是为了把日期都格式化成YYYYMMDD这样的格式*/
-          IF (DAY(@P12_Name)<=15) THEN
-             CASE day(LAST_DAY(@P12_name))
-                WHEN 31 THEN set @Max_date= date(DATE_ADD(@P12_Name+0,INTERVAL 16 DAY))+0 ;
-                WHEN 30 THEN set @Max_date= date(DATE_ADD(@P12_Name+0,INTERVAL 15 DAY))+0 ;
-                WHEN 29 THEN set @Max_date= date(DATE_ADD(@P12_Name+0,INTERVAL 14 DAY))+0 ; 
-                WHEN 28 THEN set @Max_date= date(DATE_ADD(@P12_Name+0,INTERVAL 13 DAY))+0 ; 
-             END CASE;
-          ELSE
-             set @Max_date= date(DATE_ADD(@P12_Name+0, INTERVAL 15 DAY))+0;
-          END IF;
+/_ 判断最大分区的时间段，如果是前半个月的，那么根据情况需要加13,14,15,16天  
+   如果是后半个月的，那么直接加15天。 +0 是为了把日期都格式化成YYYYMMDD这样的格式_/  
+    IF \(DAY\(@P12\_Name\)&lt;=15\) THEN  
+       CASE day\(LAST\_DAY\(@P12\_name\)\)  
+          WHEN 31 THEN set @Max\_date= date\(DATE\_ADD\(@P12\_Name+0,INTERVAL 16 DAY\)\)+0 ;  
+          WHEN 30 THEN set @Max\_date= date\(DATE\_ADD\(@P12\_Name+0,INTERVAL 15 DAY\)\)+0 ;  
+          WHEN 29 THEN set @Max\_date= date\(DATE\_ADD\(@P12\_Name+0,INTERVAL 14 DAY\)\)+0 ;   
+          WHEN 28 THEN set @Max\_date= date\(DATE\_ADD\(@P12\_Name+0,INTERVAL 13 DAY\)\)+0 ;   
+       END CASE;  
+    ELSE  
+       set @Max\_date= date\(DATE\_ADD\(@P12\_Name+0, INTERVAL 15 DAY\)\)+0;  
+    END IF;
 
-      /* 修改表，在最大分区的后面增加一个分区，时间范围加半个月 */
-          SET @s1=concat('ALTER TABLE ',@_tablename,' ADD PARTITION (PARTITION p',
-          @Max_date,' VALUES LESS THAN (TO_DAYS (''',date(@Max_date),''')))');
-          PREPARE stmt2 FROM @s1;
-          EXECUTE stmt2;
-          DEALLOCATE PREPARE stmt2;
+/_ 修改表，在最大分区的后面增加一个分区，时间范围加半个月 _/  
+    SET @s1=concat\('ALTER TABLE ',@\_tablename,' ADD PARTITION \(PARTITION p',  
+    @Max\_date,' VALUES LESS THAN \(TO\_DAYS \(''',date\(@Max\_date\),'''\)\)\)'\);  
+    PREPARE stmt2 FROM @s1;  
+    EXECUTE stmt2;  
+    DEALLOCATE PREPARE stmt2;
 
-      /* 提交 */
-          COMMIT ;
-       end;
+/_ 提交 _/  
+    COMMIT ;  
+ end;
 
 
 

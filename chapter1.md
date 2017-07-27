@@ -95,3 +95,5 @@ ALTER TABLE test PARTITION BY RANGE (TO_DAYS(read_time))
 
 
 
+
+

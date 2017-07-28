@@ -98,9 +98,9 @@
       KEY `ammater_id` (`ammeter_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的modbus位置信息';
 
-sss
+* ### 实时电表数据
 
-sss
+实时
 
     CREATE TABLE `ammeter_real` (
       `ID` bigint(64) unsigned NOT NULL AUTO_INCREMENT,

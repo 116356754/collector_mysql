@@ -100,3 +100,34 @@
 
 
 
+    CREATE TABLE `ammeter_real` (
+      `ID` bigint(64) unsigned NOT NULL AUTO_INCREMENT,
+      `ammater_id` varchar(255) NOT NULL COMMENT '电表号',
+      `va` float DEFAULT NULL COMMENT 'A相电压',
+      `vb` float DEFAULT NULL COMMENT 'B相电压',
+      `vc` float DEFAULT NULL COMMENT 'C相电压',
+      `ca` float DEFAULT NULL COMMENT 'A相电流',
+      `cb` float DEFAULT NULL COMMENT 'B相电流',
+      `cc` float DEFAULT NULL COMMENT 'C相电流',
+      `pat` float DEFAULT NULL COMMENT '正向有功总电量',
+      `prt` float DEFAULT NULL COMMENT '正向无功总电量',
+      `nat` float DEFAULT NULL COMMENT '反向有功总电量',
+      `nrt` float DEFAULT NULL COMMENT '反向无功总电量',
+      `pat_sharp` float DEFAULT NULL COMMENT '正向有功平',
+      `pat_peek` float DEFAULT NULL COMMENT '正向有功尖',
+      `pat_flat` float DEFAULT NULL COMMENT '正向有功峰',
+      `pat_valley` float DEFAULT NULL COMMENT '正向有功谷',
+      `cos_a` float DEFAULT NULL COMMENT 'A相功率因数',
+      `cos_b` float DEFAULT NULL COMMENT 'B相功率因数',
+      `cos_c` float DEFAULT NULL COMMENT 'C相功率因数',
+      `hz` float DEFAULT NULL COMMENT '电网频率',
+      `read_time` datetime NOT NULL COMMENT '读取时间',
+      PRIMARY KEY (`ID`,`read_time`),
+      KEY `read_time` (`read_time`),
+      KEY `e_num` (`ammater_id`),
+      KEY `enum_and_readtime` (`read_time`,`ammater_id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='data';
+
+
+
+

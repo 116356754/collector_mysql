@@ -52,7 +52,7 @@
 
 * ### 电表基础信息表
 
-该表是整个数据库表中的桥梁作用，其中关联的gw\_id是网关的id，也就是通讯功能的表；area_id是区域id，也就是该电表的地理位置_信息；usage
+该表是整个数据库表中的桥梁作用，其中关联的gwid是网关的id，也就是通讯功能的表；areaid是区域id，也就是该电表的地理位置信息；usage\_id是电表的能耗类型。这几个字段在以后的查询统计和通讯方面都十分重要。
 
     CREATE TABLE `ammeter_basic` (
       `id` int(11) NOT NULL,
@@ -63,8 +63,6 @@
       `desc` varchar(255) DEFAULT NULL COMMENT '描述信息',
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表的基本信息表';
-
-
 
 
 

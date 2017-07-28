@@ -64,5 +64,40 @@
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表的基本信息表';
 
+* ### modbus协议的电表地址表
+
+
+
+    CREATE TABLE `ammeter_mdaddr` (
+      `ID` int(64) unsigned NOT NULL AUTO_INCREMENT,
+      `ammeter_id` int(11) NOT NULL COMMENT '关联ammeter_basic中的id',
+      `Slave_id` int(11) DEFAULT NULL COMMENT 'modbus的单元号',
+      `FC` tinyint(4) DEFAULT NULL COMMENT 'modbus功能码',
+      `va_addr` bigint(64) DEFAULT NULL COMMENT 'A相电压地址',
+      `vb_addr` bigint(64) DEFAULT NULL COMMENT 'B相电压地址',
+      `vc_addr` bigint(64) DEFAULT NULL COMMENT 'C相电压地址',
+      `ca_addr` bigint(64) DEFAULT NULL COMMENT 'A相电流地址',
+      `cb_addr` bigint(64) DEFAULT NULL COMMENT 'B相电流地址',
+      `cc_addr` bigint(64) DEFAULT NULL COMMENT 'C相电流地址',
+      `pat_addr` bigint(64) DEFAULT NULL COMMENT '正向有功地址',
+      `prt_addr` bigint(64) DEFAULT NULL COMMENT '正向无功地址',
+      `nat_addr` bigint(64) DEFAULT NULL COMMENT '反向有功地址',
+      `nrt_addr` bigint(64) DEFAULT NULL COMMENT '反向无功地址',
+      `cos_a_addr` bigint(64) DEFAULT NULL COMMENT 'A相功率因素地址',
+      `cos_b_addr` bigint(64) DEFAULT NULL COMMENT 'B相功率因素地址',
+      `cos_c_addr` bigint(64) DEFAULT NULL COMMENT 'C相功率因素地址',
+      `pat_sharp_addr` bigint(64) DEFAULT NULL COMMENT '正向有功平地址',
+      `pat_peek_addr` bigint(64) DEFAULT NULL COMMENT '正向有功尖地址',
+      `pat_flat_addr` bigint(64) DEFAULT NULL COMMENT '正向有功峰地址',
+      `pat_valley_addr` bigint(64) DEFAULT NULL COMMENT '正向有功谷地址',
+      `hz_addr` bigint(64) DEFAULT NULL COMMENT '电网频率地址',
+      `v_rate` float DEFAULT NULL COMMENT '电压倍数',
+      `c_rate` float DEFAULT NULL COMMENT '电流倍数',
+      PRIMARY KEY (`ID`),
+      KEY `node_id_idx` (`ID`),
+      KEY `ammater_id` (`ammeter_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的modbus位置信息';
+
+
 
 

@@ -26,7 +26,7 @@
         PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电能的用途的分类';
 
-* ### 网关modbus通讯协议表
+* ### 网关表
 
 ### 
 

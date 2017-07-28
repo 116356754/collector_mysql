@@ -135,8 +135,14 @@
 ```
 ALTER TABLE ammeter_real PARTITION BY RANGE (TO_DAYS(read_time))
 (
-	PARTITION p20170801 VALUES LESS THAN (TO_DAYS('2017-08-01'))
+    PARTITION p20170801 VALUES LESS THAN (TO_DAYS('2017-08-01'))
 )
+```
+
+利用mysql的定时任务和事先写好的存储过程Set\_Partition，每隔15天调用一次该存储过程。
+
+```
+CALL Set_Partition('collector', 'ammeter_real');
 ```
 
 

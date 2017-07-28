@@ -52,7 +52,9 @@
 
 * ### 电表基础信息表
 
-      CREATE TABLE `ammeter_basic` (
+  该表是整个数据库表中的桥梁作用，其中关联的gw\_id是网关的id，也就是通讯功能的表；area\_id是区域id，也就是该电表的地理位置信息；
+
+*     CREATE TABLE `ammeter_basic` (
         `id` int(11) NOT NULL,
         `ammeter_id` varchar(255) NOT NULL COMMENT '电表号',
         `gw_id` int(11) NOT NULL COMMENT '网关id',

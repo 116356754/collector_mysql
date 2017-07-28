@@ -151,9 +151,9 @@ mysql计划事件，追加表分区
         STARTS '2017-08-15 23:59:59' ON COMPLETION NOT PRESERVE ENABLE DO 
         call Set_Partition('collector', 'ammeter_real')
 
-历史电表数据
+* ### 历史电表数据
 
-
+实时
 
     CREATE TABLE `ammeter_history` (
       `ID` bigint(64) NOT NULL AUTO_INCREMENT,
@@ -166,7 +166,6 @@ mysql计划事件，追加表分区
       KEY `pat_max` (`pat_max`),
       KEY `e_num` (`ammater_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='按照小时对gw_real进行统计的历史表，以便以后进行统计查询的基础';
-
 
 
 

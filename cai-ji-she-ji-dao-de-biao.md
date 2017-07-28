@@ -52,17 +52,19 @@
 
 * ### 电表基础信息表
 
-  该表是整个数据库表中的桥梁作用，其中关联的gw\_id是网关的id，也就是通讯功能的表；area\_id是区域id，也就是该电表的地理位置信息；
+该表是整个数据库表中的桥梁作用，其中关联的gw\_id是网关的id，也就是通讯功能的表；area_id是区域id，也就是该电表的地理位置_信息；usage
 
-*     CREATE TABLE `ammeter_basic` (
-        `id` int(11) NOT NULL,
-        `ammeter_id` varchar(255) NOT NULL COMMENT '电表号',
-        `gw_id` int(11) NOT NULL COMMENT '网关id',
-        `area_id` int(11) NOT NULL COMMENT '区域id',
-        `usage_id` int(11) DEFAULT NULL COMMENT '能耗分类id',
-        `desc` varchar(255) DEFAULT NULL COMMENT '描述信息',
-        PRIMARY KEY (`id`)
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表的基本信息表';
+    CREATE TABLE `ammeter_basic` (
+      `id` int(11) NOT NULL,
+      `ammeter_id` varchar(255) NOT NULL COMMENT '电表号',
+      `gw_id` int(11) NOT NULL COMMENT '网关id',
+      `area_id` int(11) NOT NULL COMMENT '区域id',
+      `usage_id` int(11) DEFAULT NULL COMMENT '能耗分类id',
+      `desc` varchar(255) DEFAULT NULL COMMENT '描述信息',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表的基本信息表';
+
+
 
 
 

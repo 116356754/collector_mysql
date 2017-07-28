@@ -12,5 +12,19 @@ sc stop MySQL57
 
 ![](/assets/stop_mysql.png)
 
+将C:\ProgramData\MySQL\MySQL Server 5.7\Data目录下的文件全部拷贝至一个比较大的磁盘中，如拷贝至F盘中
+
+![](/assets/move_mysql.png)
+
+打开C:\ProgramData\MySQL\MySQL Server 5.7\my.ini文件，修改里面的datadir项为迁移后的地址，
+
+![](/assets/datadir.png)
+
+重启mysql就可以了
+
+```
+sc start MySQL57
+```
+
 
 

@@ -99,6 +99,9 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的modbus位置信息';
 
 
+sss
+
+sss
 
     CREATE TABLE `ammeter_real` (
       `ID` bigint(64) unsigned NOT NULL AUTO_INCREMENT,
@@ -127,7 +130,6 @@
       KEY `e_num` (`ammater_id`),
       KEY `enum_and_readtime` (`read_time`,`ammater_id`)
     ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='data';
-
 
 
 

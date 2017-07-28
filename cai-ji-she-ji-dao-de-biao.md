@@ -28,7 +28,16 @@
 
 * ### 网关表
 
-### 
+
+
+    CREATE TABLE `gw` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `gw_id` int(11) NOT NULL COMMENT 'id号',
+      `type` enum('mqtt','modbus') NOT NULL DEFAULT 'modbus' COMMENT '通讯协议',
+      `name` varchar(50) DEFAULT NULL COMMENT '网关型号或者安装位置信息',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网关的配置主要用于通讯，网关数就是通讯链路数';
+
 
 
 

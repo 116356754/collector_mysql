@@ -66,7 +66,7 @@
 
 * ### modbus协议的电表地址表
 
-
+该表是配置电表的各个信息项在modbus协议上传的网关的位置信息，我们通过modbus 协议向网关查询该电表的信息项。
 
     CREATE TABLE `ammeter_mdaddr` (
       `ID` int(64) unsigned NOT NULL AUTO_INCREMENT,
@@ -97,7 +97,6 @@
       KEY `node_id_idx` (`ID`),
       KEY `ammater_id` (`ammeter_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的modbus位置信息';
-
 
 
 

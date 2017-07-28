@@ -169,7 +169,7 @@ mysql计划事件，追加表分区
       KEY `e_num` (`ammater_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='按照小时对gw_real进行统计的历史表，以便以后进行统计查询的基础';
 
-按照年为单位进行划分建立分区
+按照年为单位进行划分建立分区，如果有100个电表，每小时100条记录，每天2400条记录，每年大约有87万条记录，所以按年来划分表分区比较合适。
 
 ```
 ALTER TABLE ammeter_history PARTITION BY RANGE (TO_DAYS(read_time))

@@ -163,11 +163,24 @@ mysql计划事件，追加表分区
       `pat_min` float DEFAULT NULL COMMENT '正向有功最小值',
       `pat_max` float DEFAULT NULL COMMENT '正向有功最大值',
       `read_time` datetime NOT NULL COMMENT '读取时间',
-      PRIMARY KEY (`ID`),
+      PRIMARY KEY (`ID`,`read_time`),
       KEY `pat_min` (`pat_min`),
       KEY `pat_max` (`pat_max`),
       KEY `e_num` (`ammater_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='按照小时对gw_real进行统计的历史表，以便以后进行统计查询的基础';
+
+建立分区
+
+```
+ALTER TABLE ammeter_history PARTITION BY RANGE (TO_DAYS(read_time))
+(
+	PARTITION p2017 VALUES LESS THAN (TO_DAYS('2018-01-01')),
+	PARTITION p2018 VALUES LESS THAN (TO_DAYS('2019-01-01')),
+	PARTITION p2019 VALUES LESS THAN (TO_DAYS('2020-01-01')),
+	PARTITION p2020 VALUES LESS THAN (TO_DAYS('2021-01-01')),
+	PARTITION p2021 VALUES LESS THAN (TO_DAYS('2022-01-01'))
+)
+```
 
 
 

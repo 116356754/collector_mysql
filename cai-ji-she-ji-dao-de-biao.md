@@ -38,6 +38,19 @@
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网关的配置主要用于通讯，网关数就是通讯链路数';
 
+* ### modbus网关协议配置
+
+该表是针对网关的上传协议是modbus来的，是配置
+
+    CREATE TABLE `gw_modbus` (
+      `id` int(11) NOT NULL,
+      `gw_id` int(11) NOT NULL COMMENT '网关id',
+      `name` varchar(255) DEFAULT NULL COMMENT '网关名称或者位置信息',
+      `IP` varchar(20) NOT NULL COMMENT 'modbus通讯的地址',
+      `Port` int(10) unsigned DEFAULT '502' COMMENT 'modbus通讯的端口号',
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的通讯参数配置';
+
 
 
 

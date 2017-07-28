@@ -98,7 +98,6 @@
       KEY `ammater_id` (`ammeter_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的modbus位置信息';
 
-
 sss
 
 sss
@@ -129,7 +128,7 @@ sss
       KEY `read_time` (`read_time`),
       KEY `e_num` (`ammater_id`),
       KEY `enum_and_readtime` (`read_time`,`ammater_id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='data';
+    ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='实时电表数据';
 
 
 

@@ -70,7 +70,7 @@
 
     CREATE TABLE `ammeter_mdaddr` (
       `ID` int(64) unsigned NOT NULL AUTO_INCREMENT,
-      `ammeter_id` int(11) NOT NULL COMMENT '关联ammeter_basic中的id',
+      `ammeter_id` varchar(255) NOT NULL COMMENT '关联ammeter_basic中的id',
       `Slave_id` int(11) DEFAULT NULL COMMENT 'modbus的单元号',
       `FC` tinyint(4) DEFAULT NULL COMMENT 'modbus功能码',
       `va_addr` bigint(64) DEFAULT NULL COMMENT 'A相电压地址',

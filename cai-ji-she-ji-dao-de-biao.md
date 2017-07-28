@@ -50,5 +50,7 @@
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电表在网关中的通讯参数配置';
 
+### 
+
 
 

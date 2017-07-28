@@ -128,7 +128,7 @@ sss
       KEY `read_time` (`read_time`),
       KEY `e_num` (`ammater_id`),
       KEY `enum_and_readtime` (`read_time`,`ammater_id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='实时电表数据';
+    ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='电表每分钟采集实时数据';
 
 
 

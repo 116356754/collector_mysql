@@ -100,7 +100,7 @@
 
 * ### 实时电表数据
 
-实时
+采集软件通过modbus协议定时轮询网关得到的数据和通过mqtt接收到的数据都会存到该表中，由于由于该表的数据量比较大，所以需要建表分区，而且需要每隔15天就要追加一个分区，追加的分区也是根据read\_time字段来划分的
 
     CREATE TABLE `ammeter_real` (
       `ID` bigint(64) unsigned NOT NULL AUTO_INCREMENT,

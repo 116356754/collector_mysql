@@ -100,7 +100,7 @@
 
 * ### 实时电表数据
 
-采集软件通过modbus协议定时轮询网关得到的数据和通过mqtt接收到的数据都会存到该表中，由于由于该表的数据量比较大，所以需要建表分区，而且需要每隔15天就要追加一个分区，追加的分区也是根据read\_time字段来划分的
+采集软件通过modbus协议定时轮询网关得到的数据和通过mqtt接收到的数据都会存到该表中，由于由于该表的数据量比较大，所以需要建表分区，而且需要每隔15天就要追加一个分区，追加的分区也是根据read\_time字段来划分的。
 
     CREATE TABLE `ammeter_real` (
       `ID` bigint(64) unsigned NOT NULL AUTO_INCREMENT,
@@ -129,6 +129,15 @@
       KEY `e_num` (`ammater_id`),
       KEY `enum_and_readtime` (`read_time`,`ammater_id`)
     ) ENGINE=InnoDB AUTO_INCREMENT=17023 DEFAULT CHARSET=utf8 COMMENT='电表每分钟采集实时数据';
+
+给实时数据包新建表分区。
+
+```
+ALTER TABLE ammeter_real PARTITION BY RANGE (TO_DAYS(read_time))
+(
+	PARTITION p20170801 VALUES LESS THAN (TO_DAYS('2017-08-01'))
+)
+```
 
 
 

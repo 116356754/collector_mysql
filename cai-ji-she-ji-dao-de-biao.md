@@ -155,7 +155,7 @@ mysql计划事件，追加表分区
 
 * ### 历史电表数据
 
-实时
+在实时表的基础上，按照小时为单位对电表进行了统计得到的历史表，主要是用于历史快速查询。
 
     CREATE TABLE `ammeter_history` (
       `ID` bigint(64) NOT NULL AUTO_INCREMENT,

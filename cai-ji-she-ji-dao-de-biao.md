@@ -145,5 +145,11 @@ ALTER TABLE ammeter_real PARTITION BY RANGE (TO_DAYS(read_time))
 CALL Set_Partition('collector', 'ammeter_real');
 ```
 
+事件
+
+    CREATE DEFINER=`root`@`%` EVENT `e_Set_Partition` ON SCHEDULE EVERY 15 DAY 
+    STARTS '2017-08-15 23:59:59' ON COMPLETION NOT PRESERVE ENABLE DO 
+    call Set_Partition('collector', 'ammeter_real')
+
 
 

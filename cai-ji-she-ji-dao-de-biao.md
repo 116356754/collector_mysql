@@ -28,7 +28,7 @@
 
 * ### 网关表
 
-
+网关表主要用于通讯的表，通讯协议暂时有modbus和mqtt协议两种协议的形式，如果网关通过modbus来上传数据，那么我们就对每个是modbus协议的网关建立通讯链路，然后再根据电表的modbus地址表的信息定时轮询该链路上modbus地址值。
 
     CREATE TABLE `gw` (
       `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,6 @@
       `name` varchar(50) DEFAULT NULL COMMENT '网关型号或者安装位置信息',
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网关的配置主要用于通讯，网关数就是通讯链路数';
-
 
 
 

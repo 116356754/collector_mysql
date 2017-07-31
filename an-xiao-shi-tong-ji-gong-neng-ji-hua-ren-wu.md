@@ -64,17 +64,17 @@
 
 * ### 定时统计任务
 
-    CREATE DEFINER=`root`@`%` 
-    EVENT `e_History_timer`
-    ON SCHEDULE EVERY 1 HOUR STARTS '2017-07-31 08:41:22'
-    ON COMPLETION NOT PRESERVE
-    ENABLE
-    DO
-    CALL grouptimer('');
+```
+CREATE DEFINER=root@% 
+  EVENT e_History_timer
+  ON SCHEDULE EVERY 1 HOUR STARTS '2017-07-31 08:41:22'
+  ON COMPLETION NOT PRESERVE
+  ENABLE
+  DO
+  CALL grouptimer('');
+```
 
 ![](/assets/history_define.png)
-
-
 
 ![](/assets/history_call.png)
 

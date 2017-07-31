@@ -18,7 +18,7 @@
 
         -- 游标
         DECLARE cur CURSOR FOR
-        SELECT e_num,MIN(pat),MAX(pat) FROM ammeter_real
+        SELECT ammater_id,MIN(pat),MAX(pat) FROM ammeter_real
         WHERE DATE_FORMAT(read_time,'%Y-%m-%d %H')=hourformat(datehour) GROUP BY 
             DATE_FORMAT(read_time,'%Y-%m-%d %H'),ammater_id;
 
@@ -63,8 +63,6 @@
     END;
 
 * ### 定时统计任务
-
-
 
 
 

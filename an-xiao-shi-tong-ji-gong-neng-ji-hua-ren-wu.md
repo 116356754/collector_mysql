@@ -4,5 +4,43 @@
 
 * ### 按小时统计存储过程
 
-实时
+```
+BEGIN
+-- 需要定义接收游标数据的变量 
+  DECLARE ammater_id VARCHAR(255);
+	DECLARE pat_min FLOAT default 0;
+	DECLARE pat_max FLOAT default 0;
+
+ -- 遍历数据结束标志
+  DECLARE done INT DEFAULT FALSE;
+
+ -- 游标
+	DECLARE cur CURSOR FOR 
+		SELECT e_num,MIN(pat),MAX(pat) FROM ammeter_real 
+			WHERE DATE_FORMAT(read_time,'%Y-%m-%d %H')=hourformat(datehour) GROUP BY DATE_FORMAT(read_time,'%Y-%m-%d %H'),ammater_id;
+
+ -- 将结束标志绑定到游标
+   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+	-- 打开游标
+    OPEN  cur;     
+    -- 遍历
+    read_loop: LOOP
+            -- 取值 取多个字段
+            FETCH  NEXT from cur INTO ammater_id,pat_min,pat_max;
+            IF done THEN
+                LEAVE read_loop;
+             END IF;
+				SELECT ammater_id,pat_min,pat_max;
+        -- 你自己想做的操作
+       INSERT INTO ammeter_history (ammater_id,pat_min,pat_max,read_time) VALUES (ammater_id,pat_min,pat_max,DATE_FORMAT(datehour,'%Y-%m-%d %H'));
+
+    END LOOP;
+ 
+    CLOSE cur;
+
+END
+```
+
+
 

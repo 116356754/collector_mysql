@@ -58,3 +58,9 @@ show variables like 'event_scheduler';
 
 ![](/assets/event_on.png)
 
+* ### 开启创建函数权限
+
+ 如果在create function的时候有 1418的错语的时候，可以直接在配置文件my.cnf中添加如下行\[mysqld\] log\_bin\_trust\_routine\_creators=1; 
+
+![](/assets/1418.png)
+

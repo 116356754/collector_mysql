@@ -4,7 +4,7 @@
 
 * ### 按小时统计存储过程
 
-创建一个带输入参数的存储过程grouptimer，该存储过程主要是对电表的实时表ammeter\_real的数据按照某个小时进行分组得到所有电表某个小时的pat最小值和pat的最大值等信息插入到电表的历史表ammeter\_history中，
+创建一个带输入参数的存储过程grouptimer，该存储过程主要是对电表的实时表ammeter\_real的数据按照某个小时进行分组得到所有电表某个小时的pat最小值和pat的最大值等信息插入到电表的历史表ammeter\_history中。
 
 ```
 BEGIN
@@ -45,6 +45,25 @@ BEGIN
 
 END
 ```
+
+在grouptimer存储过程中用到了自定义的一个函数，该函数的功能是
+
+    CREATE DEFINER = `root`@`%` FUNCTION `hourformat`(datehour varchar(20))
+     RETURNS varchar(20)
+    BEGIN
+    	DECLARE sRet VARCHAR(20);
+    	SET @_time=datehour;
+    	SELECT str_to_date(@_time,'%Y-%m-%d %H:%i:%s') INTO sRet;
+    	IF datehour='' OR  @_time IS NULL THEN
+    		SET sRet =  DATE_FORMAT(date_sub(NOW(),INTERVAL 1 HOUR ),'%Y-%m-%d %H');
+    	ELSE
+    		SET sRet =  DATE_FORMAT(date_sub(@_time,INTERVAL 1 HOUR ),'%Y-%m-%d %H');
+    	END IF;	
+
+    	return sRet;
+    END;
+
+
 
 
 

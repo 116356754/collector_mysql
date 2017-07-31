@@ -64,6 +64,8 @@
 
 * ### 定时统计任务
 
+定义一个事件，每隔一个小时执行一次grouptimer存储过程，将实时数据统计插入到历史表中
+
 ```
 CREATE DEFINER=root@% 
   EVENT e_History_timer
@@ -71,7 +73,7 @@ CREATE DEFINER=root@%
   ON COMPLETION NOT PRESERVE
   ENABLE
   DO
-  CALL grouptimer('');
+CALL grouptimer('');
 ```
 
 ![](/assets/history_define.png)

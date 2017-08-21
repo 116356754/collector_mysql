@@ -1,3 +1,5 @@
+## MySQL数据库导入
+
 在安装好的数据库中，安装Navicat  for MySQL程序，以便进行数据库的表结构和事件函数等的导入。
 
 ![](/assets/createdb.png)  
@@ -10,8 +12,4 @@
 点击“开始”按钮就可以完成数据库的导入工作了，导入成功后就可以看到提示文字。
 
 ![](/assets/importdbok.png)
-
-
-
-
 

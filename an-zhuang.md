@@ -60,7 +60,23 @@ show variables like 'event_scheduler';
 
 * ### 开启创建函数权限
 
- 如果在create function的时候有 1418的错语的时候，可以直接在配置文件my.cnf中添加如下行\[mysqld\] log\_bin\_trust\_routine\_creators=1; 
+  如果在create function的时候有 1418的错语的时候，可以直接在配置文件my.cnf中添加如下行\[mysqld\] log\_bin\_trust\_routine\_creators=1;
 
 ![](/assets/1418.png)
+
+### 授权远程连接数据库
+
+在安装mysql的机器上运行： 
+
+```
+mysql -u root -p
+```
+
+然后输入数据库root用户的密码:luomi，再给远程授权
+
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'luomi' WITH GRANT OPTION;
+```
+
+
 

@@ -52,18 +52,16 @@
 
 部署其实很简单，只需要将collector\_ui文件夹拷贝到某个目录中，然后解压就可以了，并在终端启动来检测是否正确。
 
-![](/assets/ui.png)在IE浏览器中就可以查看是否正常运行。敲入http://localhost:5000就可以了，进入了系统的登录界面。
+![](/assets/ui.png)在IE浏览器中就可以查看是否正常运行。敲入[http://localhost:5000就可以了，进入了系统的登录界面。](http://localhost:5000就可以了，进入了系统的登录界面。)
 
 ![](/assets/login.png)
-
-
 
 ## 3.利用NSSM部署服务
 
 目前NSSM最新版的是2.23（[下载地址](http://nssm.cc/release/nssm-2.23.zip)），下载之后解压，根据你的系统选择32位和64位的版本，直接在nssm.exe 所在目录运行命令行，输入nssw install +你的服务名，例如：
 
 ```bash
-nssm install collector
+nssm install collector_ui
 ```
 
 之后会显示出GUI界面：
@@ -72,16 +70,16 @@ nssm install collector
 
 在Path 中选择你安装的node.exe所在位置，Startup directory 选择你的node应用的目录，Argument 输入你的启动文件，例如在D:/work/wangky/collector\_ui运行bin/www （在Startup directory目录执行node ./bin/www ）：
 
-![](/assets/nssm_install2.png)
+![](/assets/nssm_set.png)
 
 点击Install Service：
 
-![](/assets/nssm_install3.png)
+![](/assets/nssmok.png)
 
 之后运行：
 
 ```
-nssm start collector
+nssm start collector_ui
 ```
 
 服务已经启动，我刚才的bin/www文件，启动一个http服务器，监听3000端口，现在就可以打开`127.0.0.1:3000`访问了：

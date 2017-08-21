@@ -88,7 +88,7 @@ nssm start collector_ui
 
 ```
 nssm start <servicename>
-nssm stop <servicename>
+nssm stop <servicename> 
 nssm restart <servicename>
 ```
 

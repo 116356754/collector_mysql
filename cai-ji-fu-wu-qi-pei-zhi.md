@@ -82,9 +82,7 @@ nssm install collector_ui
 nssm start collector_ui
 ```
 
-服务已经启动，我刚才的bin/www文件，启动一个http服务器，监听3000端口，现在就可以打开`127.0.0.1:3000`访问了：
-
-![](/assets/nssm_install8.png)
+服务已经启动，我刚才的bin/www文件，启动一个http服务器，监听5000端口，现在就可以打开`127.0.0.1:5000`访问了：
 
 其他的设置可以参考[官方文档](http://nssm.cc/usage)。它的命令行操作也很简单：
 

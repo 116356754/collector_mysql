@@ -64,3 +64,19 @@ show variables like 'event_scheduler';
 
 ![](/assets/1418.png)
 
+### 授权远程连接数据库
+
+在安装mysql的机器上运行：
+
+```
+mysql -u root -p
+```
+
+然后输入数据库root用户的密码:luomi，再给远程授权
+
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'luomi' WITH GRANT OPTION;
+```
+
+
+

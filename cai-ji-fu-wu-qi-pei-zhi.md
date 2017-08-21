@@ -6,7 +6,7 @@
 
 32 位安装包下载地址 :[https://nodejs.org/dist/v7.9.0/node-v7.9.0-x86.msi](https://nodejs.org/dist/v7.9.0/node-v7.9.0-x86.msi)
 
-64 位安装包下载地址 :[https://nodejs.org/dist/v7.9.0/node-v7.9.1-x64.msi](https://nodejs.org/dist/v7.9.0/node-v7.9.1-x64.msi)
+64 位安装包下载地址 :[https://nodejs.org/dist/v7.9.0/node-v7.9.0-x64.msi](https://nodejs.org/dist/v7.9.0/node-v7.9.0-x64.msi)
 
 本文实例以 v7.9.0版本为例，其他版本类似， 安装步骤：
 

@@ -56,3 +56,45 @@
 
 ![](/assets/login.png)
 
+
+
+## 3.利用NSSM部署服务
+
+目前NSSM最新版的是2.23（[下载地址](http://nssm.cc/release/nssm-2.23.zip)），下载之后解压，根据你的系统选择32位和64位的版本，直接在nssm.exe 所在目录运行命令行，输入nssw install +你的服务名，例如：
+
+```bash
+nssm install collector
+```
+
+之后会显示出GUI界面：
+
+![](http://img.keenwon.com/2014/07/20140708222155_45820.png)
+
+在Path 中选择你安装的node.exe所在位置，Startup directory 选择你的node应用的目录，Argument 输入你的启动文件，例如在D:/work/wangky/collector\_ui运行bin/www （在Startup directory目录执行node ./bin/www ）：
+
+![](/assets/nssm_install2.png)
+
+点击Install Service：
+
+![](/assets/nssm_install3.png)
+
+之后运行：
+
+```
+nssm start collector
+```
+
+服务已经启动，我刚才的bin/www文件，启动一个http服务器，监听3000端口，现在就可以打开`127.0.0.1:3000`访问了：
+
+![](/assets/nssm_install8.png)
+
+其他的设置可以参考[官方文档](http://nssm.cc/usage)。它的命令行操作也很简单：
+
+```
+nssm start <servicename>
+nssm stop <servicename>
+nssm restart <servicename>
+```
+
+
+

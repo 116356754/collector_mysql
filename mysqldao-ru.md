@@ -13,3 +13,20 @@
 
 ![](/assets/importdbok.png)
 
+
+
+### 授权给root用户
+
+权限问题，授权 给 root  所有sql 权限
+
+```
+mysql> grant all privileges on *.* to root@"%" identified by ".";
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+```
+
+
+
